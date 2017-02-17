@@ -75,5 +75,5 @@ module.exports = (robot) ->
   robot.respond /!mensa/i, (response) ->
     mensaplan(robot, response)
   # any message starting with !mensa, optional offset
-  robot.hear /^!mensa ?(\\S*)/i, (response) ->
+  robot.hear /^!mensa ?(\S*)/i, (response) ->
     mensaplan(robot, response)

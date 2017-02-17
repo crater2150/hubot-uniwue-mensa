@@ -21,8 +21,8 @@ Then add **hubot-uniwue-mensa** to your `external-scripts.json`:
 ## Sample Interaction
 
 ```
-user1>> hubot hello
-hubot>> hello!
+user1>> !mensa
+hubot>> Speiseplan für heute:...
 ```
 
 ## NPM Module
