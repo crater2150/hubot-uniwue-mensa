@@ -2,7 +2,12 @@
 
 Lets Hubot get the mensa food plan for Uni Würzburg
 
-See [`src/uniwue-mensa.coffee`](src/uniwue-mensa.coffee) for full documentation.
+## Dependencies
+
+This depends on JSON requested from a unofficial server not affiliated with 
+Studentenwerk Würzburg and will stop working when that server is down.
+
+The source for the json server can be found at https://bitbucket.org/nosebrain/cafeteria-menu-service
 
 ## Installation
 
