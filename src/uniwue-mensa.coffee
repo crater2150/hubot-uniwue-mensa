@@ -1,4 +1,4 @@
-BASE_URL="https://nosebrain.myqnapcloud.com/service/uni-wue/"
+BASE_URL="https://service.nosebrain.de/service/uni-wue/"
 
 EMOJI_LOOKUP={
   "Alkohol": "🍸",
