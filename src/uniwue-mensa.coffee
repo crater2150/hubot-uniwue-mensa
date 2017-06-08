@@ -31,10 +31,8 @@ build_plan_from_json = (json, weekday) ->
   else
     foods = ("#{to_emojis(f)} #{f.description}: #{f.prices[0]} / #{f.prices[1]} / #{f.prices[2]}" for f in day.food)
 
-    if (day.food.some (f) -> /burger/i.test(f.description) && !(f.ingredients.includes("Fleischlos") || f.ingredients.includes("Fisch") || f.ingredients.includes("Vegan")))
+    if (day.food.some (f) -> /burger/i.test(f.description))
       foods = ["🍔🍔🍔🍔🍔🍔 *BURGERALARM*  🍔🍔🍔🍔🍔🍔\n"].concat foods
-    else if (day.food.some (f) -> /burger/i.test(f.description))
-      foods = ["🍔🌱🍔🌱🍔 *VEGGIE-BURGER*  🍔🌱🍔🌱🍔\n"].concat foods
 
     if (day.food.some (f) -> /currywurst/i.test(f.description))
       foods = ["🔔🔔🔔🔔🔔🔔 *CURRYWURST* 🔔🔔🔔🔔🔔🔔\n"].concat foods
@@ -43,7 +41,7 @@ build_plan_from_json = (json, weekday) ->
 
 
 to_emojis = (food) ->
-  food.ingredients.push "Burger" if /burger/i.test(food.description)
+  #food.ingredients.push "Burger" if /burger/i.test(food.description)
   (EMOJI_LOOKUP[i] for i in food.ingredients).join " "
     
 day_name = (weekday, offset) ->
