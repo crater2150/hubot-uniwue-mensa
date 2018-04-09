@@ -1,7 +1,7 @@
 {
   "name": "hubot-uniwue-mensa",
   "description": "Lets Hubot get the mensa food plan for Uni Würzburg",
-  "version": "0.0.8",
+  "version": "0.1.0",
   "author": "Alexander Gehrke",
   "license": "MIT",
   "keywords": "hubot, hubot-scripts",

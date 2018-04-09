@@ -18,9 +18,9 @@ EMOJI_LOOKUP={
 WEEKDAYS = [ "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag" ]
 
 LOCATIONS = [
+  #{name: "Frankenstube", id: 1},
   #{name: "Mensa", id: 2},
-  #{name: "Mensateria", id: 6},
-  {name: "Frankenstube", id: 1},
+  {name: "Mensateria", id: 6},
   {name: "Outer-Rim-Mensa", id: 7}
 ]
 
@@ -63,11 +63,11 @@ day_name = (weekday, offset) ->
   else
     return WEEKDAYS[weekday]
 
-retrievePlan = (location, weekday) ->
+retrievePlan = (robot, location, weekday) ->
   new Promise (resolve) ->
-  robot.http(BASE_URL + location.id + "/CURRENT.json")
-    .header('Accept', 'application/json')
-    .get() (err, res, body) => resolve(location.name + ":\n" + build_plan_from_json(body, weekday))
+    robot.http(BASE_URL + location.id + "/CURRENT.json")
+      .header('Accept', 'application/json')
+      .get() (err, res, body) => resolve("*#{location.name}*:\n#{build_plan_from_json(body, weekday)}")
 
 mensaplan = (robot, response) ->
   offset = response.match[1] * 1
@@ -79,9 +79,8 @@ mensaplan = (robot, response) ->
 
   day = day_name(weekday, offset)
 
-  plans = await Promise.All(LOCATIONS.map (loc) -> retrievePlan(loc, weekday))
-
-  response.send "Speiseplan für #{day}:\n#{plans.join("\n")}"
+  Promise.all(LOCATIONS.map (loc) -> retrievePlan(robot, loc, weekday))
+    .then (plans) -> response.send "Speiseplan für #{day}:\n#{plans.join("\n")}"
 
 # here we call the hubot api to react to messages
 module.exports = (robot) ->
