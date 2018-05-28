@@ -21,7 +21,8 @@ LOCATIONS = [
   #{name: "Frankenstube", id: 1},
   #{name: "Mensa", id: 2},
   {name: "Mensateria", id: 6},
-  {name: "Outer-Rim-Mensa", id: 7}
+  {name: "Outer-Rim-Mensa", id: 7},
+  {name: "Essensausgabe Philo", id: 8}
 ]
 
 build_plan_from_json = (json, weekday) ->
